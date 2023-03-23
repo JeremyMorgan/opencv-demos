@@ -29,6 +29,7 @@ run:
 ```
 pip install -r requirements.txt
 ```
+Enjoy! 
 
 --- 
 All content is CC (copyright free), use it however you like. 
