@@ -18,6 +18,18 @@ Each of these scripts demonstrates a different image processing technique using 
 
 Stay Tuned for more, and [follow me](https://www.twitch.tv/jeremymorgan/) if you want to view the weekly stream. 
 
+## Running these files
+
+Have Python installed on your machine. 
+
+Create a new Python environment. 
+
+run: 
+
+```
+pip install -r requirements.txt
+```
+
 --- 
 All content is CC (copyright free), use it however you like. 
 
