@@ -10,7 +10,7 @@ Demos based on the stream:
 
 - [bodydetect.py](https://github.com/JeremyMorgan/opencv-demos/blob/main/bodydetect.py): Reads in an image file and detects full bodies in the image using a Haar Cascade classifier.
 - [edge-canny.py](https://github.com/JeremyMorgan/opencv-demos/blob/main/edge-canny.py): Reads in an image file and applies the Canny edge detection algorithm to the image.
-- [blurring.py)](https://github.com/JeremyMorgan/opencv-demos/blob/main/blurring.py): Reads in an image file, resizes it to fit within a specified output size, and displays the original and resized images.
+- [blurring.py](https://github.com/JeremyMorgan/opencv-demos/blob/main/blurring.py): Reads in an image file, resizes it to fit within a specified output size, and displays the original and resized images.
 - [sobel-edge-detection.py](https://github.com/JeremyMorgan/opencv-demos/blob/main/edge-sobel.py): Reads in an image file and applies the Sobel edge detection algorithm to the image.
 - [facedetect.py](https://github.com/JeremyMorgan/opencv-demos/blob/main/facedetect.py): Reads in an image file and detects faces in the image using a Haar Cascade classifier.
 
