@@ -1,4 +1,4 @@
-# opencv-demos
+# OpenCV Computer Vision Demos
 
 These are the code examples from my [Computer Vision Power Hour](https://www.twitch.tv/jeremymorgan/schedule?vodID=1773385086). 
 
