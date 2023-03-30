@@ -6,7 +6,15 @@ These are the code examples from my [Computer Vision Power Hour](https://www.twi
 
 Demos based on the stream:
 
-23 March 2023:
+### 23 March 2023:
+
+[Replay of the Stream](https://www.twitch.tv/videos/1779967820)
+
+- [find_cars_harr.py](https://github.com/JeremyMorgan/opencv-demos/blob/main/find_cars_harr.py): Reads a live video from YouTube and attempts to locate cars in feed.
+
+### 23 March 2023:
+
+[Replay of the Stream](https://www.twitch.tv/videos/1773385086)
 
 - [bodydetect.py](https://github.com/JeremyMorgan/opencv-demos/blob/main/bodydetect.py): Reads in an image file and detects full bodies in the image using a Haar Cascade classifier.
 - [edge-canny.py](https://github.com/JeremyMorgan/opencv-demos/blob/main/edge-canny.py): Reads in an image file and applies the Canny edge detection algorithm to the image.
