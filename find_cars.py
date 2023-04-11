@@ -70,7 +70,7 @@ def main():
     cap = cv2.VideoCapture(stream_url)
     cap.set(cv2.CAP_PROP_FPS, 20)
 
-    classifier_path = "cars.xml"
+    classifier_path = "models/cars.xml"
 
     while True:
         ret, frame = cap.read()
