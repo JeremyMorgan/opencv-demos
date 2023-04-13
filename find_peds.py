@@ -10,8 +10,11 @@ def get_stream_url(video_url):
     return streams['best'].url
 
 
-video_url = "https://www.youtube.com/watch?v=b7lsZ-0KiJw"
-# video_url = "https://www.youtube.com/watch?v=R3YNscjcJOk"
+# video_url = "https://www.youtube.com/watch?v=b7lsZ-0KiJw"
+video_url = "https://www.youtube.com/watch?v=R3YNscjcJOk"
+# venice beach
+video_url = "https://www.youtube.com/watch?v=w_DfTc7F5oQ"
+
 # too slow joe
 # video_url = "https://www.youtube.com/watch?v=e_WBuBqS9h8"
 # times square
@@ -20,6 +23,31 @@ video_url = "https://www.youtube.com/watch?v=b7lsZ-0KiJw"
 # video_url = "https://www.youtube.com/watch?v=5_XSYlAfJZM"
 
 stream_url = get_stream_url(video_url)
+
+
+def detect_pedestrians(frame, classifier_path):
+
+    hog = cv2.HOGDescriptor()
+    hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
+
+    height, width = frame.shape[:2]
+    scale_factor = 0.5
+
+    # resized_frame = cv2.resize(
+    #  frame, (int(width * scale_factor), int(height * scale_factor)))
+
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    gray = cv2.equalizeHist(gray)
+
+    finalimage = gray
+
+    pedestrians, _ = hog.detectMultiScale(
+        finalimage, winStride=(4, 4), padding=(8, 8), scale=1.05)
+
+    pedestrians = np.array([[int(x / scale_factor), int(y / scale_factor), int(
+        w / scale_factor), int(h / scale_factor)] for (x, y, w, h) in pedestrians])
+
+    return finalimage, pedestrians
 
 
 def detect_vehicles(frame, classifier_path):
@@ -86,7 +114,8 @@ def main():
     # cap.set(cv2.CAP_PROP_AUTO_EXPOSURE, 1)
     # cap.set(cv2.CAP_FFMPEG, 1900)
 
-    classifier_path = "models/cars.xml"
+    # classifier_path = "models/cars.xml"
+    classifier_path = "models/hogcascade_pedestrians.xml"
 
     trackers = []
     counter = 0
@@ -105,7 +134,7 @@ def main():
         resized_image = cv2.resize(
             frame, None, fx=scaling_factor, fy=scaling_factor, interpolation=cv2.INTER_AREA)
 
-        preprocessed, vehicles = detect_vehicles(
+        preprocessed, vehicles = detect_pedestrians(
             resized_image, classifier_path)
 
         if counter % 10 == 0:
@@ -114,8 +143,8 @@ def main():
             for (x, y, w, h) in vehicles:
                 tracker = dlib.correlation_tracker()
                 counter += 1
-                cv2.rectangle(resized_image, (x, y),
-                              (x + w, y + h), (0, 255, 0), 2)
+                # cv2.rectangle(resized_image, (x, y),
+                #              (x + w, y + h), (0, 255, 0), 2)
                 rect = dlib.rectangle(x, y, x + w, y + h)
                 tracker.start_track(resized_image, rect)
                 trackers.append(tracker)
@@ -132,7 +161,7 @@ def main():
 
         # add text to image
 
-        resized_image = cv2.putText(resized_image, "Vehicles: " + str(counter), (50, 420),
+        resized_image = cv2.putText(resized_image, "Pedestrians: " + str(counter), (50, 420),
                                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
 
         cv2.imshow('Pre Processing', preprocessed)
